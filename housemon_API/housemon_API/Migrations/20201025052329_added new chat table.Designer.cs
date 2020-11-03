@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using housemon_API.Models;
 
 namespace housemon_API.Migrations
 {
     [DbContext(typeof(PropertyMonitorDbContext))]
-    partial class PropertyMonitorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201025052329_added new chat table")]
+    partial class addednewchattable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,7 +33,7 @@ namespace housemon_API.Migrations
                     b.Property<string>("receiverId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("senderId")
+                    b.Property<string>("recepientId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTimeOffset>("timeReceived")

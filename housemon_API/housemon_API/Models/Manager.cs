@@ -10,5 +10,6 @@ namespace housemon_API.Models
     public class Manager : User
     {
         public int salary { get; set; }
+        public string propertyId { get; set; }
     }
 }

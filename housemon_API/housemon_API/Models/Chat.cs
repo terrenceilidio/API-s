@@ -7,13 +7,16 @@ using System.Threading.Tasks;
 
 namespace housemon_API.Models
 {
-    public class LandLordProperty
+    public class Chat
     {
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string Id { get; set; }
-        public Landlord LandLord { get; set; }
-        public Property Property { get; set; }
-        public DateTimeOffset LastVisit { get; set; }
+        public string chartId { get; set; }
+        public string receiverId { get; set; }
+        public string senderId {get; set;}
+        public string message { get; set; }
+        public DateTimeOffset timeSent { get; set; }
+        public DateTimeOffset timeReceived { get; set; }
     }
 }

@@ -7,13 +7,16 @@ using System.Threading.Tasks;
 
 namespace housemon_API.Models
 {
-    public class LandLordProperty
+    public class Notice
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string Id { get; set; }
-        public Landlord LandLord { get; set; }
-        public Property Property { get; set; }
-        public DateTimeOffset LastVisit { get; set; }
+        public string noticeId { get; set; }
+        public string userId { get; set; }
+        public string propertyId { get; set; }
+        public DateTimeOffset startDate  = DateTimeOffset.Now;
+        public DateTimeOffset endDate { get; set;} 
+        public string data { get; set; }
+
     }
 }

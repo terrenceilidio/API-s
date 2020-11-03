@@ -11,10 +11,8 @@ namespace housemon_API.Models
     {
         public string leaseId { get; set; }
         public string propertyId { get; set; }
-        [Required]
         public int rentAmount { get; set; }
-        public string property_id { get; set; }
         public int deposit { get; set; }
-        public DateTime rentDueDate { get; set; }
+        public DateTimeOffset rentDueDate { get; set; }
     }
 }

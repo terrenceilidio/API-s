@@ -21,6 +21,8 @@ namespace housemon_API.Models
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Complaint> complaints { get; set; }
         public DbSet<LandLordProperty> landlordProperties { get; set; }
+        public DbSet<Notice> notices { get; set; }
+        public DbSet<Chat> chats { get; set; }
 
     }
 

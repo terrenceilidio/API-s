@@ -11,48 +11,24 @@ namespace housemon_API.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string userId { get; set; }
-        [Required]
-        [MaxLength(100)]
+        public string userId { get; set; }  
+  
         public string names { get; set; }
-        [MaxLength(6)]
+   
         public string gender { get; set; }
-        [MaxLength(13)]
-        public string idNumber { get; set; }
-        [Required]
-        [MaxLength(50)]
-        public string username { get; set; }
-        [MaxLength(20)]
-        public string cellNumber { get; set; }
-        [Required]
-        [MaxLength(16)]
-        public string password { get; set; }
-        [Required]
-        public string role { get; set; }
-        public DateTime createdAt { get; set; } = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day);
-        public DateTime updatedAt { get; set; } 
-        public string profilePicture { get; set; }
+        //public List<string> tokens{ get; set; }
 
-        //we  will use this to cast a userType to a user
-        public T makeUser<T>() where T:User, new()
-        {
-            return new T
-            {
-                names = names,
-                gender = gender,
-                idNumber = idNumber,
-                username = username,
-                cellNumber = cellNumber,
-                updatedAt = updatedAt,
-                profilePicture = profilePicture,
-                createdAt = createdAt,
-                userId = userId,
-                password = password,
-                role = role
-            };
-        }
+        public string idNumber { get; set; }   
+  
+        public string username { get; set; }
+     
+        public string cellNumber { get; set; } 
+  
+        public string password { get; set; }
+        public string role { get; set; }
+        public DateTimeOffset createdAt { get; set; } = DateTime.UtcNow;
+        public DateTimeOffset? updatedAt { get; set; } 
+        public string? profilePicture  { get; set; }
     }
 
-    //Todo : hash the possword preferebly use bcrypt
-    //Todo : create timestamps for when the object was created a
 }

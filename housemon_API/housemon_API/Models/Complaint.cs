@@ -12,12 +12,12 @@ namespace housemon_API.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long complaintId { get; set; }
+        public string complaintId { get; set; }
         public string userId { get; set; }
         public string propertyId { get; set; }
-        public DateTime dateMade { get; set; } = new DateTime();
+        public DateTimeOffset dateMade { get; set; } = DateTimeOffset.Now;
         public Boolean isResolved { get; set; }
-        public DateTime dateResolved { get; set; }
+        public DateTimeOffset dateResolved { get; set; }
         public string data  { get; set; }
         
     }

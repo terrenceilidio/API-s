@@ -3,47 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using housemon_API.Models;
 
 namespace housemon_API.Migrations
 {
     [DbContext(typeof(PropertyMonitorDbContext))]
-    partial class PropertyMonitorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200819210611_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("housemon_API.Models.Chat", b =>
-                {
-                    b.Property<string>("chartId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("message")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("receiverId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("senderId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("timeReceived")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<DateTimeOffset>("timeSent")
-                        .HasColumnType("datetimeoffset");
-
-                    b.HasKey("chartId");
-
-                    b.ToTable("chats");
-                });
 
             modelBuilder.Entity("housemon_API.Models.Complaint", b =>
                 {
@@ -54,24 +30,22 @@ namespace housemon_API.Migrations
                     b.Property<string>("data")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset>("dateMade")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("dateMade")
+                        .HasColumnType("datetime2");
 
-                    b.Property<DateTimeOffset>("dateResolved")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("dateResolved")
+                        .HasColumnType("datetime2");
 
                     b.Property<bool>("isResolved")
                         .HasColumnType("bit");
 
                     b.Property<string>("propertyId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("userId")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("complaintId");
-
-                    b.HasIndex("propertyId");
 
                     b.ToTable("complaints");
                 });
@@ -83,22 +57,27 @@ namespace housemon_API.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("cellNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
-                    b.Property<DateTimeOffset>("createdAt")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("createdAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("gender")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(6)")
+                        .HasMaxLength(6);
 
                     b.Property<string>("idNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(13)")
+                        .HasMaxLength(13);
 
                     b.Property<string>("names")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
 
                     b.Property<string>("password")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(16)")
+                        .HasMaxLength(16);
 
                     b.Property<string>("profilePicture")
                         .HasColumnType("nvarchar(max)");
@@ -112,11 +91,12 @@ namespace housemon_API.Migrations
                     b.Property<int>("salary")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset?>("updatedAt")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime?>("updatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("username")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.HasKey("userId");
 
@@ -132,8 +112,8 @@ namespace housemon_API.Migrations
                     b.Property<string>("LandLorduserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTimeOffset>("LastVisit")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("LastVisit")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("propertyId")
                         .HasColumnType("nvarchar(450)");
@@ -154,22 +134,27 @@ namespace housemon_API.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("cellNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
-                    b.Property<DateTimeOffset>("createdAt")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("createdAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("gender")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(6)")
+                        .HasMaxLength(6);
 
                     b.Property<string>("idNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(13)")
+                        .HasMaxLength(13);
 
                     b.Property<string>("names")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
 
                     b.Property<string>("password")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(16)")
+                        .HasMaxLength(16);
 
                     b.Property<string>("profilePicture")
                         .HasColumnType("nvarchar(max)");
@@ -177,11 +162,12 @@ namespace housemon_API.Migrations
                     b.Property<string>("role")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset?>("updatedAt")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime?>("updatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("username")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.HasKey("userId");
 
@@ -194,24 +180,31 @@ namespace housemon_API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTimeOffset>("createdAt")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("createdAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("data")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset>("endDate")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<string>("houseId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("propertyId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset>("startDate")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<byte[]>("signature")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<DateTime>("startDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("updatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("userId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("leaseId");
-
-                    b.HasIndex("propertyId");
 
                     b.ToTable("leases");
                 });
@@ -223,22 +216,27 @@ namespace housemon_API.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("cellNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
-                    b.Property<DateTimeOffset>("createdAt")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("createdAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("gender")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(6)")
+                        .HasMaxLength(6);
 
                     b.Property<string>("idNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(13)")
+                        .HasMaxLength(13);
 
                     b.Property<string>("names")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
 
                     b.Property<string>("password")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(16)")
+                        .HasMaxLength(16);
 
                     b.Property<string>("profilePicture")
                         .HasColumnType("nvarchar(max)");
@@ -252,11 +250,12 @@ namespace housemon_API.Migrations
                     b.Property<int>("salary")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset?>("updatedAt")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime?>("updatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("username")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.HasKey("userId");
 
@@ -274,8 +273,8 @@ namespace housemon_API.Migrations
                     b.Property<string>("data")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset>("endDate")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("endDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("propertyId")
                         .HasColumnType("nvarchar(max)");
@@ -301,8 +300,8 @@ namespace housemon_API.Migrations
                     b.Property<string>("country")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset>("createdAt")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("createdAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("rooms")
                         .HasColumnType("int");
@@ -310,8 +309,8 @@ namespace housemon_API.Migrations
                     b.Property<string>("rules")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset>("updatedAt")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("updatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("propertyId");
 
@@ -325,28 +324,33 @@ namespace housemon_API.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("cellNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
-                    b.Property<DateTimeOffset>("createdAt")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("createdAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("deposit")
                         .HasColumnType("int");
 
                     b.Property<string>("gender")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(6)")
+                        .HasMaxLength(6);
 
                     b.Property<string>("idNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(13)")
+                        .HasMaxLength(13);
 
                     b.Property<string>("leaseId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("names")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
 
                     b.Property<string>("password")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(16)")
+                        .HasMaxLength(16);
 
                     b.Property<string>("profilePicture")
                         .HasColumnType("nvarchar(max)");
@@ -357,32 +361,24 @@ namespace housemon_API.Migrations
                     b.Property<int>("rentAmount")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset>("rentDueDate")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("rentDueDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("role")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset?>("updatedAt")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime?>("updatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("username")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.HasKey("userId");
-
-                    b.HasIndex("leaseId");
 
                     b.HasIndex("propertyId");
 
                     b.ToTable("tenants");
-                });
-
-            modelBuilder.Entity("housemon_API.Models.Complaint", b =>
-                {
-                    b.HasOne("housemon_API.Models.Property", null)
-                        .WithMany("Complaints")
-                        .HasForeignKey("propertyId");
                 });
 
             modelBuilder.Entity("housemon_API.Models.LandLordProperty", b =>
@@ -396,13 +392,6 @@ namespace housemon_API.Migrations
                         .HasForeignKey("propertyId");
                 });
 
-            modelBuilder.Entity("housemon_API.Models.Lease", b =>
-                {
-                    b.HasOne("housemon_API.Models.Property", null)
-                        .WithMany("Leases")
-                        .HasForeignKey("propertyId");
-                });
-
             modelBuilder.Entity("housemon_API.Models.Manager", b =>
                 {
                     b.HasOne("housemon_API.Models.Property", null)
@@ -412,10 +401,6 @@ namespace housemon_API.Migrations
 
             modelBuilder.Entity("housemon_API.Models.Tenant", b =>
                 {
-                    b.HasOne("housemon_API.Models.Lease", null)
-                        .WithMany("Tenants")
-                        .HasForeignKey("leaseId");
-
                     b.HasOne("housemon_API.Models.Property", null)
                         .WithMany("tenants")
                         .HasForeignKey("propertyId");

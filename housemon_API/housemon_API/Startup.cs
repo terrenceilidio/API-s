@@ -27,12 +27,14 @@ namespace housemon_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<PropertyMonitorDbContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:PropertyMonitorDB"]));
-            services.AddCors(options =>
+            services.AddDbContext<PropertyMonitorDbContext>(opts => opts.UseSqlServer(Configuration.GetConnectionString("PropertyMonitorDB")));
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
-                options.AddPolicy("AllowOrigin",
-                    builder => builder.AllowAnyOrigin());
-            });
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader()
+                       .WithOrigins("http://localhost:8080");
+            }));
             services.AddControllers();
         }
 
@@ -43,13 +45,19 @@ namespace housemon_API
             {
                 app.UseDeveloperExceptionPage();
             }
-            
-            // app.UseHttpsRedirection();
 
+            app.UseHttpsRedirection();
+            app.UseCors("MyPolicy");
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseWebSockets();
+            app.Use(async (context, next) =>
+            {
+                // Do work that doesn't write to the Response.
+                await next.Invoke();
+                // Do logging or other work that doesn't write to the Response.
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

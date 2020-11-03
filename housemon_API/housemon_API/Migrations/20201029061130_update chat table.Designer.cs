@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using housemon_API.Models;
 
 namespace housemon_API.Migrations
 {
     [DbContext(typeof(PropertyMonitorDbContext))]
-    partial class PropertyMonitorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201029061130_update chat table")]
+    partial class updatechattable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

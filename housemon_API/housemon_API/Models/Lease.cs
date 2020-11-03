@@ -12,12 +12,11 @@ namespace housemon_API.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string leaseId { get; set; }
-        public string userId { get; set; }
-        public DateTime createdAt { get; set; } = new DateTime();
-        public DateTime updatedAt { get; set; }
-        public byte[] signature { get; set; }
-        public DateTime startDate {get; set;}
-        public string houseId { get; set; }
-        public string leaseText { get; set; }
+        public string propertyId { get; set; }
+        public DateTimeOffset createdAt { get; set; } = DateTimeOffset.Now;
+        public DateTimeOffset startDate {get; set;}
+        public DateTimeOffset endDate { get; set; }
+        public string data { get; set; }
+        public virtual ICollection<Tenant> Tenants { get; set; }
     }
 }

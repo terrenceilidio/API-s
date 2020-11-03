@@ -14,6 +14,8 @@ namespace housemon_API.Models
             landLordProperties = new List<LandLordProperty>();
             managers = new List<Manager>();
             tenants = new List<Tenant>();
+            Leases = new List<Lease>();
+            Complaints = new List<Complaint>();
         }
 
         [Key]
@@ -21,18 +23,15 @@ namespace housemon_API.Models
         public string propertyId { get; set; }
         public virtual ICollection<Manager> managers { get; set; }
         public virtual ICollection<Tenant> tenants { get; set; }
-        public virtual ICollection<LandLordProperty> landLordProperties { get; set; } 
+        public virtual ICollection<LandLordProperty> landLordProperties { get; set; }
+        public virtual ICollection<Lease> Leases { get; set; }
+        public virtual ICollection<Complaint> Complaints{ get; set; }
         public int rooms { get; set; }
-        public Boolean isFull {get; set;}
-        [Required]
-        public int roomsAvailable { get; set; } 
-        public int rentTotal { get; set; }
-        public double rating { get; set; }
-        [Required]
         [MaxLength(200)]
         public string address { get; set; }
+        public string country { get; set; }
         public string rules { get; set; }
-        public DateTime createdAt { get; set; }
-        public DateTime updatedAt { get; set; }
+        public DateTimeOffset createdAt { get; set; } 
+        public DateTimeOffset updatedAt { get; set; }
     }
 }
