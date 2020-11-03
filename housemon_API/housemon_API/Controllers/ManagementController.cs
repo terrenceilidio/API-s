@@ -541,7 +541,7 @@ namespace housemon_API.Controllers
 
                 var Name = getUserById(complaint.userId).names;
                 var obj = new PushNotification();
-                obj.SendPushNotification($"Hi  {Name} ",$"The following complain {complaint.data} has been resolved", "dL5-i9W16Fc:APA91bF-tenV-RQ0fBR-hpEbbRFt_KaWoP-NP-j1WFHg552UtrUuoJADwC0JZhPgYt57QbThyjyR6pgedtOE1uhlQV5Q2dfHnYkMvJIIDu6sXEUWTqmlOdBB_3-cdam2nD8aYnppEiGu");
+                obj.SendPushNotification($"Hi  {Name} ",$"The following complain {complaint.data} has been resolved", "");
                 return new ResponseModel<string>
                 {
                     data = "Successfully updated complaint details",

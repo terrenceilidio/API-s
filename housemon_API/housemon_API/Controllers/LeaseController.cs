@@ -91,7 +91,7 @@ namespace housemon_API.Controllers
                         tenant.leaseId = assignedTenants.leaseId;
                         dbcontext.SaveChanges();
                     }
-                    this.SendPushNotification("Hi", "you been assigned a lease log into the mobile app to view", "dL5-i9W16Fc:APA91bF-tenV-RQ0fBR-hpEbbRFt_KaWoP-NP-j1WFHg552UtrUuoJADwC0JZhPgYt57QbThyjyR6pgedtOE1uhlQV5Q2dfHnYkMvJIIDu6sXEUWTqmlOdBB_3-cdam2nD8aYnppEiGu");
+                    this.SendPushNotification("Hi", "you been assigned a lease log into the mobile app to view", "");
 
                 }
 
